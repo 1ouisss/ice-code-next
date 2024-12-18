@@ -1,16 +1,15 @@
 // next.config.js
 module.exports = {
-    reactStrictMode: true, // Enforces strict mode for React to catch potential problems
-    swcMinify: true, // Enable SWC compiler for minification (improves performance)
+    reactStrictMode: true,
+    swcMinify: true,
     images: {
-      domains: ['your-domain.com'], // If you use external image domains, add them here
+      domains: ['your-domain.com'], // Update with your allowed image domains
     },
     experimental: {
-      appDir: true, // Enable experimental features for app directory structure (if using)
+      appDir: true,
     },
     webpack(config) {
-      // Customize the Webpack config if needed
-      return config;
+      return config; // Customize Webpack if needed
     },
   };
   
