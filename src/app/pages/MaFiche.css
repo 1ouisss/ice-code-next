@@ -1,0 +1,47 @@
+/* MaFiche.css */
+.mafiche-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mafiche-container h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .mafiche-container div {
+    margin-bottom: 15px;
+  }
+  
+  .mafiche-container div input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .mafiche-container div input:focus {
+    outline: none;
+    border-color: #007aff;
+  }
+  
+  .mafiche-container .qr-code {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .mafiche-container .qr-code img {
+    width: 150px;
+    height: 150px;
+  }
+  
