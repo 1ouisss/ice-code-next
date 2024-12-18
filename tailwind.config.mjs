@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 const tailwindConfig = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -9,5 +10,4 @@ const tailwindConfig = {
   plugins: [],
 };
 
-// Use named export to avoid default export conflict
-export { tailwindConfig };
+export default tailwindConfig;
