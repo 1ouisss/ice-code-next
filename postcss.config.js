@@ -1,5 +1,5 @@
 /** @type {import('postcss-load-config').Config} */
-import tailwindConfig from './tailwind.config.mjs';
+import tailwindConfig from './tailwind.config.js/index.js';
 
 const config = {
   plugins: {

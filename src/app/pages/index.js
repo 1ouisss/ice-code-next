@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import QRCode from 'qrcode.react'; // Install qrcode.react library: npm install qrcode.react
+import QRCode from 'qrcode.react'; // Ensure you have installed qrcode.react
 
 export default function HomePage() {
   const [userData, setUserData] = useState(null);
 
-  // Fetch user data from the database (you would replace this with an API call)
   useEffect(() => {
-    // Example API call to get user data
+    // Replace this with a proper API call to get user data
     const fetchUserData = async () => {
-      const response = await fetch('/api/userData'); // You should create an API for fetching this data
+      const response = await fetch('/api/userData'); // Update with the correct API path
       const data = await response.json();
-      setUserData(data); // Assume it returns the user data
+      setUserData(data);
     };
 
     fetchUserData();
@@ -53,3 +52,4 @@ export default function HomePage() {
     </div>
   );
 }
+
