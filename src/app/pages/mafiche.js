@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode.react'; // Install qrcode.react library: npm install qrcode.react
+import './MaFiche.css'; // Import your CSS for styling
 
 export default function MaFiche() {
   const [userData, setUserData] = useState(null);
