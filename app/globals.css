@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-red-500 text-white; /* Red background, white text */
+}
+
+h1, h2, h3 {
+  @apply font-bold text-white;
+}
+
+button {
+  @apply bg-white text-red-500 px-4 py-2 rounded hover:bg-red-600 transition;
+}
+
+button:hover {
+  @apply transform scale-105;
+}
