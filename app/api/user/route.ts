@@ -1,5 +1,5 @@
-import dbConnect from '@/utils/dbConnect';
-import User from '@/models/User';
+import dbConnect from "@/utils/dbConnect";
+import User from "@/models/User";
 
 export async function GET() {
   try {
@@ -8,8 +8,8 @@ export async function GET() {
     return NextResponse.json(users, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: 'Error fetching users', error: error.message },
-      { status: 500 }
+      { message: "Error fetching users", error: error.message },
+      { status: 500 },
     );
   }
 }
@@ -22,8 +22,8 @@ export async function POST(req: Request) {
     const existingUser = await User.findOne({ email: body.email });
     if (existingUser) {
       return NextResponse.json(
-        { message: 'User already exists.' },
-        { status: 400 }
+        { message: "User already exists." },
+        { status: 400 },
       );
     }
 
@@ -31,13 +31,13 @@ export async function POST(req: Request) {
     await newUser.save();
 
     return NextResponse.json(
-      { message: 'User created successfully!', user: newUser },
-      { status: 201 }
+      { message: "User created successfully!", user: newUser },
+      { status: 201 },
     );
   } catch (error) {
     return NextResponse.json(
-      { message: 'Something went wrong.', error: error.message },
-      { status: 500 }
+      { message: "Something went wrong.", error: error.message },
+      { status: 500 },
     );
   }
 }

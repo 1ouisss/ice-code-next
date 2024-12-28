@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
-import dbConnect from '@/utils/dbConnect';
-import User from '@/models/User';
+import { NextResponse } from "next/server";
+import dbConnect from "@/utils/dbConnect";
+import User from "@/models/User";
 
 export async function GET(req: Request) {
   try {
@@ -9,7 +9,10 @@ export async function GET(req: Request) {
     const user = await User.findById(userId);
 
     if (!user) {
-      return NextResponse.json({ success: false, error: 'User not found' }, { status: 404 });
+      return NextResponse.json(
+        { success: false, error: "User not found" },
+        { status: 404 },
+      );
     }
 
     const profile = {
@@ -20,6 +23,9 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ success: true, profile });
   } catch (error) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error.message },
+      { status: 500 },
+    );
   }
 }

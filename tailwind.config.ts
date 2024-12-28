@@ -1,17 +1,18 @@
+// tailwind.config.ts
 /** @type {import('tailwindcss').Config} */
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ['./app/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}", // Scans all JS/TS files in app
+    "./pages/**/*.{js,ts,jsx,tsx}", // Scans pages for Tailwind classes
+    "./components/**/*.{js,ts,jsx,tsx}", // Scans components for Tailwind classes
+  ],
   theme: {
     extend: {
       colors: {
-        red: {
-          DEFAULT: '#FF0000',
-        },
-        white: {
-          DEFAULT: '#FFFFFF',
-        },
+        iceRed: "#FF0000", // Custom red color
+        iceWhite: "#FFFFFF", // Custom white color
       },
     },
   },

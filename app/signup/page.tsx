@@ -1,78 +1,49 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import React, { useState } from "react";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
   });
-  const [message, setMessage] = useState('');
-  const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+    const response = await fetch("/api/signUp", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    try {
-      const res = await fetch('/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong');
-      }
-
-      setMessage('User created successfully!');
-      router.push(data.redirect); // Redirect to the questionnaire
-    } catch (error: any) {
-      setMessage(error.message);
+    if (response.ok) {
+      window.location.href = "/questionnaire";
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <Image
-        src="/ICE_LOGO_DEF_NEG.png"
-        alt="ICE CODE Logo"
-        width={128}
-        height={128}
-        className="mb-6"
-      />
-      <h1 className="text-3xl font-bold mb-4 text-gray-700">Sign Up</h1>
-      {message && (
-        <p
-          className={`mb-4 ${
-            message.includes('successfully') ? 'text-green-500' : 'text-red-500'
-          }`}
-        >
-          {message}
-        </p>
-      )}
-      <form
-        className="bg-white p-6 rounded shadow-md w-full max-w-md"
-        onSubmit={handleSubmit}
-      >
+    <div className="signup-container flex flex-col items-center justify-center min-h-screen">
+      <h2 className="text-3xl font-bold mb-6">Sign Up</h2>
+      <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <input
           type="text"
-          name="firstName"
+          name="name"
           placeholder="First Name"
-          value={formData.firstName}
+          value={formData.name}
           onChange={handleChange}
-          className="w-full mb-4 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+          className="input-field"
         />
         <input
           type="text"
@@ -80,7 +51,7 @@ export default function SignUp() {
           placeholder="Last Name"
           value={formData.lastName}
           onChange={handleChange}
-          className="w-full mb-4 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+          className="input-field"
         />
         <input
           type="email"
@@ -88,7 +59,7 @@ export default function SignUp() {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full mb-4 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+          className="input-field"
         />
         <input
           type="password"
@@ -96,21 +67,11 @@ export default function SignUp() {
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
-          className="w-full mb-4 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400 bg-white"
+          className="input-field"
         />
-        <button
-          type="submit"
-          className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition"
-        >
-          Sign Up
-        </button>
+        <button type="submit" className="submit-button">Sign Up</button>
       </form>
-      <p className="mt-4">
-        Already have an account?{' '}
-        <a href="/signin" className="text-red-500 hover:underline">
-          Sign In
-        </a>
-      </p>
     </div>
   );
 }
+

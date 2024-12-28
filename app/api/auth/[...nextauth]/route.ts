@@ -1,24 +1,33 @@
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
+// Configure NextAuth options
+const authOptions = {
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: "Credentials",
       credentials: {
-        email: { label: 'Email', type: 'text', placeholder: 'you@example.com' },
-        password: { label: 'Password', type: 'password' },
+        email: { label: "Email", type: "text", placeholder: "you@example.com" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const user = { id: '1', name: 'John Doe', email: 'john@example.com' }; // Replace with DB call
-        if (credentials?.email === user.email) {
-          return user;
+        // Replace this with your real database call
+        const user = { id: "1", name: "John Doe", email: "john@example.com" };
+
+        if (
+          credentials?.email === user.email &&
+          credentials?.password === "password123"
+        ) {
+          return user; // Authentication successful
         }
-        return null;
+        return null; // Authentication failed
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET, // Ensure this is set in your .env file
 };
 
-export default NextAuth(authOptions);
+export const handler = NextAuth(authOptions); // Use NextAuth as a handler
+
+// Export both GET and POST methods for the API route
+export { handler as GET, handler as POST };
