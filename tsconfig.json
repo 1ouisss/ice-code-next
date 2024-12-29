@@ -1,32 +1,48 @@
 {
-    "compilerOptions": {
-      "target": "esnext",
-      "lib": ["dom", "dom.iterable", "esnext"],
-      "allowJs": true,
-      "skipLibCheck": true,
-      "strict": true,
-      "module": "esnext",
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "jsx": "preserve",
-      "incremental": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "strictNullChecks": true,
-      "plugins": [
-        {
-          "name": "next"
-        }
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@utils/*": [
+        "./utils/*"
       ],
-      "paths": {
-        "@/utils/*": ["./utils/*"],
-        "@/models/*": ["./models/*"],
-        "@/lib/*": ["./lib/*"]
-      },
-      "noEmit": true
+      "@models/*": [
+        "./models/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-    "exclude": ["node_modules"]
-  }
-  
+    "noEmit": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

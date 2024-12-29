@@ -1,19 +1,18 @@
 {
-    "extends": ["next/core-web-vitals"],
-    "env": {
-      "node": true,
-      "browser": true,
-      "es2021": true
-    },
-    "rules": {
-      "no-unused-vars": "warn",
-      "react/react-in-jsx-scope": "off",
-      "no-fallthrough": "error",
-      "no-explicit-any": "error",
-      "no-undef": "error",
-      "no-unsafe-function-type": "error",
-      "no-useless-escape": "warn",
-      "react/no-unescaped-entities": "warn"
-    }
+  "extends": ["next/core-web-vitals"],
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "react/react-in-jsx-scope": "off",
+    "no-fallthrough": "error",
+    "no-explicit-any": "error",
+    "no-undef": "error",
+    "no-unsafe-function-type": "error",
+    "no-useless-escape": "warn",
+    "react/no-unescaped-entities": "warn"
   }
-  
+}

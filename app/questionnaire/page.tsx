@@ -22,7 +22,7 @@ export default function Questionnaire() {
 
   const handleEmergencyContactChange = (
     index: number,
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     const { name, value } = e.target;
     const updatedContacts = [...formData.emergencyContacts];

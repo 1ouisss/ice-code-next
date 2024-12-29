@@ -6,7 +6,10 @@ if (!MONGO_URI) {
   throw new Error("Please define the MONGO_URI environment variable");
 }
 
-const cached: { conn: mongoose.Connection | null; promise: Promise<mongoose.Connection> | null } = {
+const cached: {
+  conn: mongoose.Connection | null;
+  promise: Promise<mongoose.Connection> | null;
+} = {
   conn: null,
   promise: null,
 };

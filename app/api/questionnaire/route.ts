@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     if (!userId || !emergencyContacts || emergencyContacts.length < 2) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -40,12 +40,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { success: true, message: "Questionnaire saved" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
