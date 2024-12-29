@@ -1,15 +1,16 @@
 import dbConnect from "@/utils/dbConnect";
 import User from "@/models/User";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
     await dbConnect();
     const users = await User.find();
     return NextResponse.json(users, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
       { message: "Error fetching users", error: error.message },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -23,7 +24,7 @@ export async function POST(req: Request) {
     if (existingUser) {
       return NextResponse.json(
         { message: "User already exists." },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -32,12 +33,12 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: "User created successfully!", user: newUser },
-      { status: 201 },
+      { status: 201 }
     );
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
       { message: "Something went wrong.", error: error.message },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

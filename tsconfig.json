@@ -1,31 +1,32 @@
 {
-  "compilerOptions": {
-    "target": "esnext", // Set target to "esnext" for modern JS
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "module": "esnext",
-    "moduleResolution": "node", // Node-compatible module resolution
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/utils/*": ["utils/*"],
-      "@/models/*": ["models/*"],
-      "@/lib/*": ["lib/*"] // Added for lib usage
+    "compilerOptions": {
+      "target": "esnext",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strictNullChecks": true,
+      "plugins": [
+        {
+          "name": "next"
+        }
+      ],
+      "paths": {
+        "@/utils/*": ["./utils/*"],
+        "@/models/*": ["./models/*"],
+        "@/lib/*": ["./lib/*"]
+      },
+      "noEmit": true
     },
-    "noEmit": true
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
-}
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "exclude": ["node_modules"]
+  }
+  

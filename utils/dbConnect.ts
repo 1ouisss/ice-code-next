@@ -6,17 +6,10 @@ if (!MONGO_URI) {
   throw new Error("Please define the MONGO_URI environment variable");
 }
 
-const cached: {
-  conn: mongoose.Connection | null;
-  promise: Promise<mongoose.Connection> | null;
-} = (
-  global as {
-    mongoose: {
-      conn: mongoose.Connection | null;
-      promise: Promise<mongoose.Connection> | null;
-    };
-  }
-).mongoose || { conn: null, promise: null };
+const cached: { conn: mongoose.Connection | null; promise: Promise<mongoose.Connection> | null } = {
+  conn: null,
+  promise: null,
+};
 
 async function dbConnect(): Promise<mongoose.Connection> {
   if (cached.conn) {
@@ -25,10 +18,7 @@ async function dbConnect(): Promise<mongoose.Connection> {
 
   if (!cached.promise) {
     cached.promise = mongoose
-      .connect(MONGO_URI!, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      })
+      .connect(MONGO_URI as string)
       .then((mongoose) => mongoose.connection);
   }
 

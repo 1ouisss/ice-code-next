@@ -20,18 +20,16 @@ export default function Questionnaire() {
     }));
   };
 
-  // Explicitly typed event parameter
   const handleEmergencyContactChange = (
     index: number,
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
     const { name, value } = e.target;
     const updatedContacts = [...formData.emergencyContacts];
-    updatedContacts[index][name] = value;
+    updatedContacts[index] = { ...updatedContacts[index], [name]: value }; // Fix here
     setFormData({ ...formData, emergencyContacts: updatedContacts });
   };
 
-  // Explicitly typed function return type
   const handleAddContact = (): void => {
     setFormData({
       ...formData,
@@ -42,7 +40,6 @@ export default function Questionnaire() {
     });
   };
 
-  // Explicitly typed event parameter and return type
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const response = await fetch("/api/signUp", {

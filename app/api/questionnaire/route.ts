@@ -1,5 +1,6 @@
 import dbConnect from "@/utils/dbConnect";
 import User from "@/models/User";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
@@ -16,17 +17,15 @@ export async function POST(req: Request) {
     } = await req.json();
 
     if (!userId || !emergencyContacts || emergencyContacts.length < 2) {
-      return new Response(
-        JSON.stringify({ error: "Missing required fields" }),
-        { status: 400 },
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
       );
     }
 
     const user = await User.findById(userId);
     if (!user) {
-      return new Response(JSON.stringify({ error: "User not found" }), {
-        status: 404,
-      });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     user.questionnaire = {
@@ -39,13 +38,14 @@ export async function POST(req: Request) {
     };
     await user.save();
 
-    return new Response(
-      JSON.stringify({ success: true, message: "Questionnaire saved" }),
-      { status: 200 },
+    return NextResponse.json(
+      { success: true, message: "Questionnaire saved" },
+      { status: 200 }
     );
-  } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 500,
-    });
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: error.message },
+      { status: 500 }
+    );
   }
 }

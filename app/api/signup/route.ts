@@ -1,16 +1,16 @@
-// pages/api/signUp.js
-export default async function handler(req, res) {
-  if (req.method === "POST") {
+export async function POST(req: Request) {
     try {
-      const formData = req.body;
+      const formData = await req.json(); // Using req.json() to parse the body
       // Process formData and handle database insertion here
-
-      res.status(200).json({ message: "Sign-up successful" });
+  
+      return new Response(JSON.stringify({ message: "Sign-up successful" }), { status: 200 });
     } catch (error) {
       console.error(error); // Log the error for debugging
-      res.status(500).json({ message: "Internal Server Error" });
+      return new Response(JSON.stringify({ message: "Internal Server Error" }), { status: 500 });
     }
-  } else {
-    res.status(405).json({ message: "Method Not Allowed" });
   }
-}
+  
+  export async function GET() {
+    return new Response(JSON.stringify({ message: "Method Not Allowed" }), { status: 405 });
+  }
+  
