@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 
 export default function SignUp() {
@@ -34,43 +33,61 @@ export default function SignUp() {
   };
 
   return (
-    <div className="signup-container flex flex-col items-center justify-center min-h-screen">
-      <h2 className="text-3xl font-bold mb-6">Sign Up</h2>
-      <form onSubmit={handleSubmit} className="w-full max-w-sm">
-        <input
-          type="text"
-          name="name"
-          placeholder="First Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="input-field"
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={handleChange}
-          className="input-field"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="input-field"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          className="input-field"
-        />
-        <button type="submit" className="submit-button">Sign Up</button>
-      </form>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full sm:w-96">
+        <div className="flex justify-center mb-6">
+          <img src="/ICE_LOGO_DEF_NEG.png" alt="ICE CODE" className="h-12" />
+        </div>
+        <h2 className="text-2xl font-bold text-center mb-4 text-red-600">Sign Up</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex flex-col space-y-2">
+            <input
+              type="text"
+              name="name"
+              placeholder="First Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="px-4 py-2 border rounded-md"
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              className="px-4 py-2 border rounded-md"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="px-4 py-2 border rounded-md"
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              className="px-4 py-2 border rounded-md"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition"
+          >
+            Sign Up
+          </button>
+        </form>
+        <p className="text-center text-sm mt-4">
+          Already have an account?{" "}
+          <a href="/signin" className="text-red-600 hover:underline">
+            Sign In
+          </a>
+        </p>
+      </div>
     </div>
   );
 }

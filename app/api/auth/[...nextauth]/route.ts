@@ -27,7 +27,11 @@ const authOptions = {
   secret: process.env.NEXTAUTH_SECRET, // Ensure this is set in your .env file
 };
 
-export const handler = NextAuth(authOptions); // Use NextAuth as a handler
+// Export GET and POST methods for the API route
+export async function GET(req: Request) {
+  return NextAuth(authOptions)(req);
+}
 
-// Export both GET and POST methods for the API route
-export { handler as GET, handler as POST };
+export async function POST(req: Request) {
+  return NextAuth(authOptions)(req);
+}
